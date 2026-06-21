@@ -25,7 +25,7 @@ This is a practical implementation of **content-based filtering**, the same fami
 |---|---|
 | **1. Input** | User submits 3+ skills through the web interface |
 | **2. Vectorize** | Skills (user's + every job role's) are converted into TF-IDF weighted vectors in a shared vocabulary space |
-| **3. Score** | Cosine Similarity measures the angle between the user's vector and each role's vector — closer alignment = higher score |
+| **3. Score** | Cosine Similarity measures the angle between the user's vector and each role's vector - closer alignment = higher score |
 | **4. Rank & Filter** | Roles are sorted by score, and only the Top 3 are returned to avoid choice overload |
 
 This is the classic **Input → Process → Output (IPO)** pipeline for recommendation systems.
@@ -36,7 +36,7 @@ This is the classic **Input → Process → Output (IPO)** pipeline for recommen
 
 ```
 tech_stack_recommender/
-├── app.py              # Flask server — routes & API
+├── app.py              # Flask server - routes & API
 ├── recommender.py       # Core engine: TF-IDF + Cosine Similarity logic
 ├── raw_skills.csv       # Dataset: job roles mapped to their skill profiles
 ├── templates/
@@ -46,7 +46,7 @@ tech_stack_recommender/
 
 ---
 
-## 🚀 Getting started
+## 🚀 Getting started (this step is specifically for someone who is just getting started with GitHub & AI)
 
 ### Prerequisites
 - Python 3.10 or higher
@@ -88,7 +88,7 @@ Type or click at least 3 skills → click **"Find my matches"** → see your Top
 
 ## 🧩 Customizing the dataset
 
-Want to add more roles or tune the matching? Edit `raw_skills.csv` — one row per role, with space-separated skills in the second column:
+Want to add more roles or tune the matching? Edit `raw_skills.csv` - one row per role, with space-separated skills in the second column:
 
 ```csv
 Role,Skills
@@ -97,14 +97,14 @@ Data Scientist,"Python SQL Machine Learning Statistics Pandas"
 
 Restart the server after editing to reload the dataset.
 
-> ⚠️ Keep skill naming consistent across rows (e.g. always "Cloud Computing", never "Cloud Computng") — TF-IDF can only match terms it recognizes as identical strings.
+> ⚠️ Keep skill naming consistent across rows (e.g. always "Cloud Computing", never "Cloud Computng") - TF-IDF can only match terms it recognizes as identical strings.
 
 ---
 
 ## 🧪 Edge cases handled
 
-- **Cold start detection** — if a user's skills have zero overlap with the dataset's vocabulary, the app flags this honestly instead of returning meaningless 0% matches as if they were real recommendations.
-- **Input validation** — requires a minimum of 3 skills before scoring, for sufficient data density.
+- **Cold start detection** - if a user's skills have zero overlap with the dataset's vocabulary, the app flags this honestly instead of returning meaningless 0% matches as if they were real recommendations.
+- **Input validation** requires a minimum of 3 skills before scoring, for sufficient data density.
 
 ---
 
